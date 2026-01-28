@@ -1,0 +1,37 @@
+{
+  "name": "informatyk",
+  "version": "2.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "25.0.10",
+    "@types/react": "^18",
+    "eslint": "^9",
+    "eslint-config-next": "^16.0.3",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "browserslist": {
+    "production": [
+      "defaults",
+      "not IE 11",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
