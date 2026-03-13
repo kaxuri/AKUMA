@@ -1,46 +1,50 @@
-import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import { Inter } from "next/font/google";
-import React from "react";
+import type { Metadata } from 'next'
+import { Barlow_Condensed, Geist, Geist_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import './globals.css'
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const _barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-barlow-condensed",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
-  colorScheme: "light dark",
-};
 
 export const metadata: Metadata = {
-  title: "AKUMA",
-  description: "Egzaminy",
-};
+  title: 'VANTA — Coming Soon',
+  description: 'A mysterious announcement. Something is coming in 2027. By Umbrella Corporation.',
+  generator: 'LUMINOXOUS',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning >
-      <link rel="icon" href="/favicon.svg" sizes="any" />
-      <body
-        className={`${geistSans.variable} ${inter.className} ${geistMono.variable}`}>
-          <main className="relative z-10">
-            {children}
-          </main>
+    <html lang="en">
+      <body className={`font-sans antialiased ${_barlowCondensed.variable}`}>
+        {children}
+        <Analytics />
       </body>
     </html>
-  );
+  )
 }
